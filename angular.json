@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "Login-TPA"
+  "defaultProject": "Login-TPA",
+  "cli": {
+    "analytics": false
+  }
 }

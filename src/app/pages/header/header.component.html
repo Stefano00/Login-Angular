@@ -1,0 +1,84 @@
+<header class="mainHeader btClear">
+  <div class="topBar btClear">
+    <div class="topBarPort btClear">
+      <div class="topTools ttLeft col-ms-6 btTextLeft">
+        <li id="custom_html-3" class="widget_text widget widget_custom_html">
+          <div class="textwidget custom-html-widget">
+            <script>
+              var monthNames = [
+                "enero", "febrero", "marzo",
+                "abril", "mayo", "junio", "julio",
+                "agosto", "septiembre", "octubre",
+                "noviembre", "diciembre"
+              ];
+
+              var weekNames = [
+                "Domingo", "Lunes", "Martes",
+                "Miércoles", "Jueves", "Viernes", "Sábado"
+              ];
+
+              var date = new Date();
+              var weekIndex = date.getDay();
+              var day = date.getDate();
+              var monthIndex = date.getMonth();
+              var year = date.getFullYear();
+
+              var ufvalor = 0;
+              var usdvalor = 0;
+
+              jQuery.getJSON('https://www.mindicador.cl/api', function (data) {
+                var dailyIndicators = data;
+                ufvalor = dailyIndicators.uf.valor;
+                usdvalor = dailyIndicators.dolar.valor;
+
+                ufvalor = ufvalor.toLocaleString('de-DE', { minimumFractionDigits: 2 });
+                usdvalor = usdvalor.toLocaleString('de-DE', { minimumFractionDigits: 2 });
+
+                jQuery('#ufvalor').html(ufvalor);
+                jQuery('#usdvalor').html(usdvalor);
+
+              }).fail(function () {
+                console.log('Error al consumir la API!');
+              });
+
+              document.write('<div class="date-top">' + weekNames[weekIndex] + ' ' + day + ' de ' + monthNames[monthIndex] + ' de ' + year + '&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;UF: $<span id="ufvalor">' + ufvalor + '</span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;USD: $<span id="usdvalor">' + usdvalor + '</span></div>');
+            </script>
+            <div class="date-top">Miércoles 25 de noviembre de 2020&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;UF:
+              $<span id="ufvalor">28.996,44</span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;USD: $<span
+                id="usdvalor">772,83</span></div>
+          </div>
+        </li>
+      </div><!-- /ttLeft -->
+      <div class="topTools ttRight col-ms-6 btTextRight">
+    
+        <div class="btIco borderless extrasmall"><a href="https://cl.linkedin.com/company/terminal-puerto-arica-s.a."
+            data-ico-fa="" class="btIcoHolder"></a></div>
+        <div class="btIco borderless extrasmall"><a href="https://www.instagram.com/tpa_arica/?hl=es-la" data-ico-fa=""
+            class="btIcoHolder"></a></div>
+        <div class="btIco borderless extrasmall"><a href="https://www.youtube.com/channel/UCVQ5MTqtjjg6oEazwD1-Cow"
+            target="_blank" data-ico-fa="" class="btIcoHolder"></a></div>
+        <div class="btIco borderless extrasmall"><a href="https://www.facebook.com/TPA2017/" target="_blank"
+            data-ico-fa="" class="btIcoHolder"></a></div>
+      </div><!-- /ttRight -->
+    </div><!-- /topBarPort -->
+  </div><!-- /topBar -->
+  <div class="port">
+    <div class="menuHolder btClear">
+      <div class="btVerticalMenuTrigger">&nbsp;<div class="btIco borderless extrasmall"><a href="#" data-ico-fa=""
+            class="btIcoHolder"></a></div>
+      </div>
+      <div class="btHorizontalMenuTrigger">&nbsp;<div class="btIco borderless extrasmall"><a href="#" data-ico-fa=""
+            class="btIcoHolder"></a></div>
+      </div>
+      <div class="logo">
+        <span>
+          <a href="http://portal.tpa.cl/tpaweb/"><img class="btMainLogo"
+              src="http://portal.tpa.cl/tpaweb/wp-content/uploads/2016/11/logo_tpa.jpg" alt="TPA"></a> </span>
+      </div><!-- /logo -->
+    
+
+    </div><!-- /menuHolder -->
+  </div>
+
+
+</header>
